@@ -1,7 +1,11 @@
 import { Job } from "./job.interface";
+// import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
+@Injectable()
 export class JobDashboardService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   getJobs(): Job[] {
     return [
