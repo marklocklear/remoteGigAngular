@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Job } from "./job.interface";
+import { JobDashboardService } from "./job-dashboard.service";
 
 @Component({
   selector: "job-dashboard",
@@ -20,26 +21,9 @@ import { Job } from "./job.interface";
 })
 export class JobDashboardComponent implements OnInit {
   jobs: Job[];
-  constructor() {}
+  constructor(private jobService: JobDashboardService) {}
   ngOnInit() {
-    this.jobs = [] = [
-      {
-        id: 1,
-        company: "RedHat",
-        title: "Software Engineer",
-        description: "Description goes here",
-        appliedFor: true,
-        appliedForDate: 1490742000000
-      },
-      {
-        id: 2,
-        company: "Digital Ocean",
-        title: "DevOps Engineer",
-        description: "Description goes here",
-        appliedFor: false,
-        appliedForDate: null
-      }
-    ];
+    this.jobs = this.jobService.getJobs();
   }
   handleEdit(event) {
     this.jobs = this.jobs.map((job: Job) => {
