@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { Title } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "app-root",
+  template: `
+    <div>
+      <job-dashboard></job-dashboard>
+    </div>
+  `
 })
-export class AppComponent {
-  title = 'remoteGig';
-}
+export class AppComponent {}
