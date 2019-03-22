@@ -25,17 +25,21 @@ export class JobDashboardComponent implements OnInit {
   ngOnInit() {
     this.jobService.getJobs().subscribe((data: Job[]) => (this.jobs = data));
   }
-  handleEdit(event) {
-    this.jobs = this.jobs.map((job: Job) => {
-      if (job.id === event.id) {
-        job = Object.assign({}, job, event);
-      }
-      return job;
+  handleEdit(event: Job) {
+    this.jobService.updateJob(event).subscribe((data: Job) => {
+      this.jobs = this.jobs.map((job: Job) => {
+        if (job.id === event.id) {
+          job = Object.assign({}, job, event);
+        }
+        return job;
+      });
     });
   }
   handleRemove(event: Job) {
-    this.jobs = this.jobs.filter((job: Job) => {
-      return job.id !== event.id;
+    this.jobService.removeJob(event).subscribe((data: Job) => {
+      this.jobs = this.jobs.filter((job: Job) => {
+        return job.id !== event.id;
+      });
     });
   }
 }

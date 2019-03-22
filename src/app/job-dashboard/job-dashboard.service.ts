@@ -14,4 +14,12 @@ export class JobDashboardService {
   getJobs(): Observable<any> {
     return this.http.get(JOB_URL);
   }
+
+  updateJob(job: Job): Observable<any> {
+    return this.http.put(`${JOB_URL}/${job.id}`, job);
+  }
+
+  removeJob(job: Job): Observable<any> {
+    return this.http.delete(`${JOB_URL}/${job.id}`);
+  }
 }
