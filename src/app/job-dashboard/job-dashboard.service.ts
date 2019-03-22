@@ -1,30 +1,17 @@
 import { Job } from "./job.interface";
-// import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs/Observable";
+import { map } from "rxjs/operators";
+
+// const JOB_URL: string = "/api/jobs";
+const JOB_URL: string = "http://localhost:3000/jobs";
 
 @Injectable()
 export class JobDashboardService {
   constructor(private http: HttpClient) {}
 
-  getJobs(): Job[] {
-    return [
-      {
-        id: 1,
-        company: "RedHat",
-        title: "Software Engineer",
-        description: "Description goes here",
-        appliedFor: true,
-        appliedForDate: 1490742000000
-      },
-      {
-        id: 2,
-        company: "Digital Ocean",
-        title: "DevOps Engineer",
-        description: "Description goes here",
-        appliedFor: false,
-        appliedForDate: null
-      }
-    ];
+  getJobs(): Observable<any> {
+    return this.http.get(JOB_URL);
   }
 }

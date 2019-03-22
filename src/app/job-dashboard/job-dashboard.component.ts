@@ -23,7 +23,7 @@ export class JobDashboardComponent implements OnInit {
   jobs: Job[];
   constructor(private jobService: JobDashboardService) {}
   ngOnInit() {
-    this.jobs = this.jobService.getJobs();
+    this.jobService.getJobs().subscribe((data: Job[]) => (this.jobs = data));
   }
   handleEdit(event) {
     this.jobs = this.jobs.map((job: Job) => {
