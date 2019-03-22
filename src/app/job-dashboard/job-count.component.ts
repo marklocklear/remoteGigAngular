@@ -1,7 +1,6 @@
 import { Component, Input } from "@angular/core";
 
 import { Job } from "./job.interface";
-import { timingSafeEqual } from "crypto";
 
 @Component({
   selector: "job-count",
